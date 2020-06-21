@@ -13,9 +13,9 @@ class CreateAñoProduccionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('año_produccions', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('años_produccion', function (Blueprint $table) {
+            $table->bigIncrements('id_anio');
+            $table->integer('anio');
         });
     }
 

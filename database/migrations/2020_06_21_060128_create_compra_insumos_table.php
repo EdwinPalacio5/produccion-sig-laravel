@@ -13,9 +13,13 @@ class CreateCompraInsumosTable extends Migration
      */
     public function up()
     {
-        Schema::create('compra_insumos', function (Blueprint $table) {
+        Schema::create('compras_insumos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->unsignedBigInteger('id_insumo');
+            $table->foreign('id_insumo')->references('id_insumo')->on('insumos');
+            $table->integer('cantidad_insumo');
+            $table->decimal('precio_unitario_insumo',6,2);
+            $table->dateTime('fecha_compra_insumo');
         });
     }
 
