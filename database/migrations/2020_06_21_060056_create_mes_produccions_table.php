@@ -16,8 +16,9 @@ class CreateMesProduccionsTable extends Migration
         Schema::create('meses_produccion', function (Blueprint $table) {
             $table->bigIncrements('id_mes');
             $table->unsignedBigInteger('id_anio');
-            $table->foreign('id_anio')->references('id_anio')->on('años_produccion');
+            $table->foreign('id_anio')->references('id_anio')->on('anios_produccion');
             $table->string('mes');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +29,6 @@ class CreateMesProduccionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mes_produccions');
+        Schema::dropIfExists('meses_produccion');
     }
 }

@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AñoProduccion extends Model
+class AnioProduccion extends Model
 {
-    protected $table = 'años_produccion';
+    protected $table = 'anios_produccion';
     protected $fillable = [
         'id_anio', 'anio'
     ];

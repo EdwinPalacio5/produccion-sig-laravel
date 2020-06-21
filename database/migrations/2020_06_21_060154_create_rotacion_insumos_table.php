@@ -21,6 +21,7 @@ class CreateRotacionInsumosTable extends Migration
             $table->foreign('id_mes')->references('id_mes')->on('meses_produccion');
             $table->integer('cantidad_disponible');
             $table->integer('cantidad_consumida');
+            $table->timestamps();
         });
     }
 
@@ -31,6 +32,6 @@ class CreateRotacionInsumosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rotacion_insumos');
+        Schema::dropIfExists('rotaciones_insumos');
     }
 }

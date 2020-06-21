@@ -2,6 +2,10 @@
 
 use Illuminate\Database\Seeder;
 
+use App\Insumo;
+use App\CompraInsumo;
+use App\RotacionInsumo;
+
 class RotacionMPSeeder extends Seeder
 {
     /**
@@ -11,6 +15,6 @@ class RotacionMPSeeder extends Seeder
      */
     public function run()
     {
-        //
+        
     }
 }

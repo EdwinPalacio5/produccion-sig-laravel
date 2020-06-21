@@ -22,6 +22,6 @@ class MesProduccion extends Model
      * Get year that owns the month
      */
     public function anio(){
-        return $this->belongsTo('App\AñoProduccion');
+        return $this->belongsTo('App\AnioProduccion');
     }
 }
