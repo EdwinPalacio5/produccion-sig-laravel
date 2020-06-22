@@ -72,8 +72,8 @@
                                 </li>
 
                                 <li class="nav-item first-one">
-                                    <a class="nav-linkk" style="text-decoration:none;" href="#">
-                                        Informe de Indice de Rotación
+                                    <a class="nav-linkk" style="text-decoration:none;" href="{{route('rmp_entries')}}">
+                                        Informe de Indice de Rotación de Insumos
                                     </a>
                                 </li>
                                 

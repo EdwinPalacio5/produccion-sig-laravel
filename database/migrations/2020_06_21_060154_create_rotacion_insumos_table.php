@@ -17,8 +17,8 @@ class CreateRotacionInsumosTable extends Migration
             $table->bigIncrements('id_rotacion');
             $table->unsignedBigInteger('id_insumo');
             $table->foreign('id_insumo')->references('id_insumo')->on('insumos');
-            $table->unsignedBigInteger('id_mes');
-            $table->foreign('id_mes')->references('id_mes')->on('meses_produccion');
+            $table->unsignedBigInteger('id_mes_anio');
+            $table->foreign('id_mes_anio')->references('id_mes_anio')->on('meses_anios');
             $table->integer('cantidad_disponible');
             $table->integer('cantidad_consumida');
             $table->timestamps();

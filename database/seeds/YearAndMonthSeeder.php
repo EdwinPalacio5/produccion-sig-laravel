@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\AnioProduccion;
 use App\MesProduccion;
+use App\MesAnio;
 
 class YearAndMonthSeeder extends Seeder
 {
@@ -38,125 +39,176 @@ class YearAndMonthSeeder extends Seeder
         //Create months of year 1
         MesProduccion::create([
             'id_mes'=>1,
-            'id_anio'=>1,
             'mes'=>'Enero'
         ]);
         MesProduccion::create([
             'id_mes'=>2,
-            'id_anio'=>1,
             'mes'=>'Febrero'
         ]);
         MesProduccion::create([
             'id_mes'=>3,
-            'id_anio'=>1,
             'mes'=>'Marzo'
         ]);
         MesProduccion::create([
             'id_mes'=>4,
-            'id_anio'=>1,
             'mes'=>'Abril'
         ]);
         MesProduccion::create([
             'id_mes'=>5,
-            'id_anio'=>1,
             'mes'=>'Mayo'
         ]);
         MesProduccion::create([
             'id_mes'=>6,
-            'id_anio'=>1,
             'mes'=>'Junio'
         ]);
         MesProduccion::create([
             'id_mes'=>7,
-            'id_anio'=>1,
             'mes'=>'Julio'
         ]);
         MesProduccion::create([
             'id_mes'=>8,
-            'id_anio'=>1,
             'mes'=>'Agosto'
         ]);
         MesProduccion::create([
             'id_mes'=>9,
-            'id_anio'=>1,
             'mes'=>'Septiembre'
         ]);
         MesProduccion::create([
             'id_mes'=>10,
-            'id_anio'=>1,
             'mes'=>'Octubre'
         ]);
         MesProduccion::create([
             'id_mes'=>11,
-            'id_anio'=>1,
             'mes'=>'Noviembre'
         ]);
         MesProduccion::create([
             'id_mes'=>12,
-            'id_anio'=>1,
             'mes'=>'Diciembre'
         ]);
 
-        //Create months of year 2
-        MesProduccion::create([
-            'id_mes'=>13,
-            'id_anio'=>2,
-            'mes'=>'Enero'
+
+         //Create year 1 all months
+         MesAnio::create([
+            'id_mes'=>1,
+            'id_anio'=>1,
+            'id_mes_anio'=>1
         ]);
-        MesProduccion::create([
-            'id_mes'=>14,
-            'id_anio'=>2,
-            'mes'=>'Febrero'
+        MesAnio::create([
+            'id_mes'=>2,
+            'id_anio'=>1,
+            'id_mes_anio'=>2
         ]);
-        MesProduccion::create([
-            'id_mes'=>15,
-            'id_anio'=>2,
-            'mes'=>'Marzo'
+        MesAnio::create([
+            'id_mes'=>3,
+            'id_anio'=>1,
+            'id_mes_anio'=>3
         ]);
-        MesProduccion::create([
-            'id_mes'=>16,
-            'id_anio'=>2,
-            'mes'=>'Abril'
+        MesAnio::create([
+            'id_mes'=>4,
+            'id_anio'=>1,
+            'id_mes_anio'=>4
         ]);
-        MesProduccion::create([
-            'id_mes'=>17,
-            'id_anio'=>2,
-            'mes'=>'Mayo'
+        MesAnio::create([
+            'id_mes'=>5,
+            'id_anio'=>1,
+            'id_mes_anio'=>5
         ]);
-        MesProduccion::create([
-            'id_mes'=>18,
-            'id_anio'=>2,
-            'mes'=>'Junio'
+        MesAnio::create([
+            'id_mes'=>6,
+            'id_anio'=>1,
+            'id_mes_anio'=>6
         ]);
-        MesProduccion::create([
-            'id_mes'=>19,
-            'id_anio'=>2,
-            'mes'=>'Julio'
+        MesAnio::create([
+            'id_mes'=>7,
+            'id_anio'=>1,
+            'id_mes_anio'=>7
         ]);
-        MesProduccion::create([
-            'id_mes'=>20,
-            'id_anio'=>2,
-            'mes'=>'Agosto'
+        MesAnio::create([
+            'id_mes'=>8,
+            'id_anio'=>1,
+            'id_mes_anio'=>8
         ]);
-        MesProduccion::create([
-            'id_mes'=>21,
-            'id_anio'=>2,
-            'mes'=>'Septiembre'
+        MesAnio::create([
+            'id_mes'=>9,
+            'id_anio'=>1,
+            'id_mes_anio'=>9
         ]);
-        MesProduccion::create([
-            'id_mes'=>22,
-            'id_anio'=>2,
-            'mes'=>'Octubre'
+        MesAnio::create([
+            'id_mes'=>10,
+            'id_anio'=>1,
+            'id_mes_anio'=>10
         ]);
-        MesProduccion::create([
-            'id_mes'=>23,
-            'id_anio'=>2,
-            'mes'=>'Noviembre'
+        MesAnio::create([
+            'id_mes'=>11,
+            'id_anio'=>1,
+            'id_mes_anio'=>11
         ]);
-        MesProduccion::create([
-            'id_mes'=>24,
+        MesAnio::create([
+            'id_mes'=>12,
+            'id_anio'=>1,
+            'id_mes_anio'=>12
+        ]);
+
+        //Create year 1 all months
+        MesAnio::create([
+            'id_mes'=>1,
             'id_anio'=>2,
-            'mes'=>'Diciembre'
+            'id_mes_anio'=>13
+        ]);
+        MesAnio::create([
+            'id_mes'=>2,
+            'id_anio'=>2,
+            'id_mes_anio'=>14
+        ]);
+        MesAnio::create([
+            'id_mes'=>3,
+            'id_anio'=>2,
+            'id_mes_anio'=>15
+        ]);
+        MesAnio::create([
+            'id_mes'=>4,
+            'id_anio'=>2,
+            'id_mes_anio'=>16
+        ]);
+        MesAnio::create([
+            'id_mes'=>5,
+            'id_anio'=>2,
+            'id_mes_anio'=>17
+        ]);
+        MesAnio::create([
+            'id_mes'=>6,
+            'id_anio'=>2,
+            'id_mes_anio'=>18
+        ]);
+        MesAnio::create([
+            'id_mes'=>7,
+            'id_anio'=>2,
+            'id_mes_anio'=>19
+        ]);
+        MesAnio::create([
+            'id_mes'=>8,
+            'id_anio'=>2,
+            'id_mes_anio'=>20
+        ]);
+        MesAnio::create([
+            'id_mes'=>9,
+            'id_anio'=>2,
+            'id_mes_anio'=>21
+        ]);
+        MesAnio::create([
+            'id_mes'=>10,
+            'id_anio'=>2,
+            'id_mes_anio'=>22
+        ]);
+        MesAnio::create([
+            'id_mes'=>11,
+            'id_anio'=>2,
+            'id_mes_anio'=>23
+        ]);
+        MesAnio::create([
+            'id_mes'=>12,
+            'id_anio'=>2,
+            'id_mes_anio'=>24
         ]);
     }
 }
