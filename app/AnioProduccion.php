@@ -14,7 +14,7 @@ class AnioProduccion extends Model
     /**
      * Get the months for the year.
      */
-    public function meses(){
-        return $this->hasMany('App\MesProduccion');
+    public function mesesAnios(){
+        return $this->hasMany('App\MesAnio');
     }
 }

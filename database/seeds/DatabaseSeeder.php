@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             YearAndMonthSeeder::class,
-            RotacionMPSeeder::class,  
-            InsumoSeeder::class          
+            InsumoSeeder::class,
+            RotacionMPSeeder::class   
         ]);
     }
 }
