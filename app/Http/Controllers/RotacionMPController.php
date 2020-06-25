@@ -12,8 +12,10 @@ use App\Insumo;
 class RotacionMPController extends Controller
 {
     /**
-     * Display data entries interface to generate query.
-     * @autor Ricardo Estupinian
+     * Funcion para mostrar la vista de parametros de consulta,
+     * se recuperan todos los insumos, meses y años que se 
+     * almacenan en la base de datos gerenciales.
+     * @author Ricardo Estupinian
      */
     public function entriesIndex(){
         $insumos = Insumo::all();
@@ -73,15 +75,27 @@ class RotacionMPController extends Controller
             $insumos = Insumo::all();
         }
 
-
+        /*Porcion de codigo que actua como switch para mostrar los resultado
+          en la interfaz WEB o en formato PDF*/
         if($request->PDF==0){
             return view('rotacion_mp.results',compact('rotacionesInsumos','año','insumos','meses','fecha'));
         }else{
+            //Geracion de PDF
             $pdf = \PDF::loadView('rotacion_mp.pdf', compact('rotacionesInsumos','año','insumos','meses','fecha'));
-            return $pdf->setPaper('legal', 'landscape')->download("IndiceRotacionMP_$fecha.pdf");
+            return $pdf->setPaper('legal', 'landscape')->stream("IndiceRotacionMP_$fecha.pdf");
         }
     }
 
+    /**
+     * Funcion que se encarga de realizar la recuperacion de 
+     * datos de la base de datos gerencial en base a los parametros
+     * de consulta.
+     * @author Ricardo Estupinian
+     * @param $mesesAnios Listado de meses y anios segun parametros
+     * @param $insumoId Id del insumo, si su valor es 0 no se recupera ninguno.
+     * @param $boolean Variable booleana que sirve como bandera.
+     * @return $rotacionesInsumos Devuelve todas las rotaciones insumos segun parametros.
+     */
     private function getData($mesesAnios,$insumoId,$boolean){
         $rotacionesInsumos = array();
         $insumos;
@@ -99,14 +113,11 @@ class RotacionMPController extends Controller
                     foreach($mesesAnios as $mes){
                         // Array asociativo mes => rotaciones[]
                         $rotacionesInsumos[$insumo->id_insumo][$mes->mes->mes] = RotacionInsumo::where('id_mes_anio',$mes->id_mes_anio)->where('id_insumo',$insumo->id_insumo)->get();
-                        
                     }
                 }
             }else{
                 $insumos = Insumo::where('id_insumo',$insumoId)->first();
                 foreach($mesesAnios as $mes){
-                    // Array asociativo mes => rotaciones[]
-                    //dd(RotacionInsumo::where('id_insumo',$insumos->id_insumo)->where('id_mes_anio',$mes->id_mes_anio)->get());
                     $rotacionesInsumos[$insumos->id_insumo][$mes->mes->mes] = RotacionInsumo::where('id_insumo',$insumos->id_insumo)->where('id_mes_anio',$mes->id_mes_anio)->get();
                 }
                     
