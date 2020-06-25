@@ -51,8 +51,9 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="text-align: center;">
                             <thead>
                                 <tr>
-                                    <th rowspan="2">Insumo</th>
+                                    
                                     @if (count($rotacionesInsumos[$insumos[0]->id_insumo])>1)
+                                    <th rowspan="2">Insumo</th>
                                         @foreach ($rotacionesInsumos[$insumos[0]->id_insumo] as $key => $rotacion)
                                             <th >{{$key}}</th>                                        
                                         @endforeach
@@ -66,6 +67,7 @@
                                             <th>Indice</th>                                            
                                         @endforeach
                                     @else
+                                        <th>Insumo</th>
                                         <th>Cantidad Disponible</th>
                                         <th>Cantidad Consumida</th>
                                         <th>Indice de Rotacion %</th>
@@ -79,7 +81,7 @@
                                 @if (count($rotacionesInsumos[$insumos[0]->id_insumo])>1)
                                     @foreach ($insumos as $insumo)
                                         <tr>
-                                        <th>{{$insumo->nombre_insumo}}</th>
+                                        <th class="text-left">{{$insumo->nombre_insumo}}</th>
                                         @foreach ($rotacionesInsumos[$insumo->id_insumo] as $key => $item)               
                                             @foreach ($item as $rotacion)
                                                 @if (!isset($rotacion)) 
@@ -94,7 +96,7 @@
                                 @else
                                 @foreach ($insumos as $insumo)
                                         <tr>
-                                        <th>{{$insumo->nombre_insumo}}</th>
+                                        <th class="text-left">{{$insumo->nombre_insumo}}</th>
                                         @foreach ($rotacionesInsumos[$insumo->id_insumo] as $key => $item)               
                                             @foreach ($item as $rotacion)
                                                 @if (!isset($rotacion)) 

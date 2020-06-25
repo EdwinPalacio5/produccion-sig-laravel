@@ -13,8 +13,9 @@
         <div class="card mt-4 ml-4 mr-4 border border-dark">
             <h5 class="h2 text-center card-header">Índice de rotación de insumos</h5>
             <div class="card-body">
-              <form action="/rotacion-mp/resultados">
+              <form action="{{route('rmp_resultados')}}" id="form_params">
                 @method('GET')
+                <input type="text" name="PDF" id="PDF" hidden>
               <h5 class="ml-4 card-title mb-4 text-center">Parametros de consulta</h5>
               <div class="row">
                 <div class="ml-4 col">
@@ -51,8 +52,8 @@
                   </select>
                 </div>
                 <div class="ml-4 mt-4 col">
-                  <input type="submit" href="{{route('rmp_resultados')}}" class="btn btn-primary w-100" value="Generar Consulta"/>
-                    <a href="#" class="mt-4 btn btn-primary w-100">Generar Reporte</a>
+                  <button type="button" id="query" class="btn btn-primary w-100">Generar Consulta</button>
+                  <button type="button" id="pdf" class="mt-4 btn btn-primary w-100">Generar Reporte</button>
                   <!--
                 <a href="{{route('rmp_resultados')}}" class="btn btn-primary w-100">Generar Consulta</a>
                     <a href="#" class="mt-4 btn btn-primary w-100">Generar Reporte</a>-->
@@ -67,5 +68,16 @@
 @endsection
 
 @section('js')
-    
+    <script>
+      $(document).ready(function(){
+        $("#pdf").on("click",function(){
+          $("#PDF").val(1);
+          $("#form_params").submit();
+        });
+        $("#query").on("click",function(){
+          $("#PDF").val(0);
+          $("#form_params").submit();
+        });
+      });
+    </script>
 @endsection

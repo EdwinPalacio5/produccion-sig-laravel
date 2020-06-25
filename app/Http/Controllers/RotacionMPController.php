@@ -32,7 +32,7 @@ class RotacionMPController extends Controller
         $mesId = $request->mesId;
         $anioId = $request->anioId;
         $insumoId = $request->insumoId;
-        $fecha = date('d/M/Y g:i a');
+        $fecha = date('d/M/Y G:i:s');
 
         // Variables de manejo de datos
         $rotacionesInsumos = array();
@@ -72,9 +72,14 @@ class RotacionMPController extends Controller
             $rotacionesInsumos = $this->getData($mesesAnios,0,true);
             $insumos = Insumo::all();
         }
-        
-        //dd($rotacionesInsumos);
-        return view('rotacion_mp.results',compact('rotacionesInsumos','año','insumos','meses','fecha'));
+
+
+        if($request->PDF==0){
+            return view('rotacion_mp.results',compact('rotacionesInsumos','año','insumos','meses','fecha'));
+        }else{
+            $pdf = \PDF::loadView('rotacion_mp.pdf', compact('rotacionesInsumos','año','insumos','meses','fecha'));
+            return $pdf->setPaper('legal', 'landscape')->download("IndiceRotacionMP_$fecha.pdf");
+        }
     }
 
     private function getData($mesesAnios,$insumoId,$boolean){
@@ -82,12 +87,6 @@ class RotacionMPController extends Controller
         $insumos;
 
         if($boolean){
-            /*foreach($mesesAnios as $mes){
-                foreach(Insumo::all() as $insumo){
-                    // Array asociativo [mes][insumo] => rotaciones[]
-                    $rotacionesInsumos[$mes->mes->mes][$insumo->nombre_insumo] = RotacionInsumo::where('id_mes_anio',$mes->id_mes_anio)->where('id_insumo',$insumo->id_insumo)->get();
-                }
-            }*/
             // Recuperacion de todos las rotaciones de un mes y año especifico
             $insumos = Insumo::all();
             foreach($insumos as $insumo){
@@ -95,11 +94,6 @@ class RotacionMPController extends Controller
             }
         }else{
             if($insumoId == 0){
-                /*foreach($mesesAnios as $mes){
-                    // Array asociativo mes => rotaciones[]
-                    $rotacionesInsumos[$mes->mes->mes] = RotacionInsumo::where('id_mes_anio',$mes->id_mes_anio)->get();
-                    
-                }*/
                 $insumos = Insumo::all();
                 foreach($insumos as $insumo){
                     foreach($mesesAnios as $mes){
@@ -109,11 +103,6 @@ class RotacionMPController extends Controller
                     }
                 }
             }else{
-                /*foreach($mesesAnios as $mes){
-                    // Array asociativo mes => rotaciones[]
-                    $rotacionesInsumos[$mes->mes->mes] = RotacionInsumo::where('id_insumo',$insumoId)->where('id_mes_anio',$mes->id_mes_anio)->get();
-                    
-                }*/
                 $insumos = Insumo::where('id_insumo',$insumoId)->first();
                 foreach($mesesAnios as $mes){
                     // Array asociativo mes => rotaciones[]
