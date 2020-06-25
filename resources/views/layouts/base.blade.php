@@ -1,3 +1,4 @@
+
 <html lang="es">
     <head>
         @yield("head")
@@ -38,20 +39,36 @@
                     La Guayabera S.A. de C.V.
                 </a>
             </div>
-  
             <div class="my-2 my-lg-2">
                 <a href="" class="navbar-brand mr-2"><i class="fas fa-user"></i>
-                    Ricardo | Administrador
+                    {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i>
+                    Salir
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                       
+                    @csrf
+
+                </form>
+                                
+            </div>
+                           
+                    
+                    
+         <!--   <div class="my-2 my-lg-2">
+                <a href="" class="navbar-brand mr-2"><i class="fas fa-user"></i>
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+                <a class="navbar-brand" href="{{ route('logout') }}">
                     <i class="fas fa-sign-out-alt"></i>
                     Salir
                 </a>
-                <a href="#" class="navbar-brand">
+                <a href="login" class="navbar-brand">
                     <i class="fas fa-sign-in-alt"></i> 
                     Ingresar
                 </a>
-            </div>            
+            </div> -->           
         </nav>
 
         <div id="content-wrapper">

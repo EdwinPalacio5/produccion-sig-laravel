@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
 
 Route::get('/rotacion-mp/parametros','RotacionMPController@entriesIndex')->name('rmp_entries');
@@ -22,3 +22,11 @@ Route::get('/rotacion-mp/resultados','RotacionMPController@resultsIndex')->name(
 Route::get('/base', function(){
     return view('layouts.base');
 });
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@home')->name('home');
+
+Route::get('/index', 'HomeController@index');
