@@ -23,7 +23,8 @@ Route::get('/base', function(){
     return view('layouts.base');
 });
 
-
+Route::get('/usuarios','HomeController@listUsers')->name('usuarios');
+Route::get('/usuario/block/{id}','HomeController@blockUser')->name('block_user');
 
 Auth::routes();
 

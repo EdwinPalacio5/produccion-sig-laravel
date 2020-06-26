@@ -82,9 +82,8 @@
                                 @yield("ul_sidebar")
                                 
                                 <li class="nav-item first-one">
-                                    <a class="nav-linkk" href="#">
+                                <a class="nav-linkk" href="{{route('usuarios')}}">
                                         Mantenimiento de Usuarios
-                                        
                                     </a>
                                 </li>
 

@@ -8,7 +8,7 @@ class Insumo extends Model
 {
     protected $table = 'insumos';
     protected $fillable = [
-        'id_insumo', 'nombre_insumo'
+        'id_insumo', 'nombre_insumo','unidad_insumo'
     ];
 
     /**

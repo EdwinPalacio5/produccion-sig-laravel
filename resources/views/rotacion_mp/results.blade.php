@@ -102,8 +102,8 @@
                                                 @if (!isset($rotacion)) 
                                                     <td class="text-center">0.00</td>
                                                 @else
-                                                    <td class="text-center">{{$rotacion->cantidad_disponible}}</td>
-                                                    <td class="text-center">{{$rotacion->cantidad_consumida}}</td>
+                                                    <td class="text-center">{{$rotacion->cantidad_disponible}} {{$insumo->unidad_insumo}}</td>
+                                                    <td class="text-center">{{$rotacion->cantidad_consumida}} {{$insumo->unidad_insumo}}</td>
                                                     <td class="text-center">{{number_format(($rotacion->cantidad_consumida / $rotacion->cantidad_disponible)*100,2)}}%</td>
                                                 @endif
                                             @endforeach                                           

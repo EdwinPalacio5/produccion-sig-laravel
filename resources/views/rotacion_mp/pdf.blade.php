@@ -96,8 +96,8 @@
                                             @if (!isset($rotacion)) 
                                                 <td class="text-center">0.00</td>
                                             @else
-                                                <td class="text-center">{{$rotacion->cantidad_disponible}}</td>
-                                                <td class="text-center">{{$rotacion->cantidad_consumida}}</td>
+                                                <td class="text-center">{{$rotacion->cantidad_disponible}} {{$insumo->unidad_insumo}}</td>
+                                                <td class="text-center">{{$rotacion->cantidad_consumida}} {{$insumo->unidad_insumo}}</td>
                                                 <td class="text-center">{{number_format(($rotacion->cantidad_consumida / $rotacion->cantidad_disponible)*100,2)}}%</td>
                                             @endif
                                         @endforeach                                           
@@ -114,14 +114,6 @@
         </div>
         <!-- /.content-wrapper -->
     </div>
-    <script type="text/php">
-        if ( isset($pdf) ) {
-            $pdf->page_script('
-                $font = $fontMetrics->get_font("Arial, Helvetica, sans-serif", "normal");
-                $pdf->text(270, 730, "Pagina $PAGE_NUM de $PAGE_COUNT", $font, 10);
-            ');
-        }
-    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
