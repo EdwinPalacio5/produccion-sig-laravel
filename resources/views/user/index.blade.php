@@ -17,12 +17,28 @@
                 </button>
               </div>
             @endif
+
+            @if (session('notification'))
+              <div class="alert alert-success text-center">
+                    {!!session('notification')!!}
+              </div>
+            @endif
+
             <h5 class="mb-4 mt-3">Listado de Usuarios Registrados en el Sistema</h5>
             <!-- DataTables Example -->
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fas fa-table"></i>
-                    Informe
+                    <div class="row">
+                    <div class="col-md-4">
+                        <i class="fas fa-table"></i>Informe
+                    </div>
+                    <div class="col-md-8 text-right">
+                        <a class="btn btn-sm btn-primary" title="Agregar Rango de Renta" href="{{ route('create_user') }}">
+                            <i class="fas fa-plus-circle mr-1 text-white"></i>
+                            <span class="text-white">Nuevo Usuario</span>
+                        </a>
+                    </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -48,11 +64,15 @@
                                     @else
                                     <td><span class="badge badge-success">Habilitado</span></td>
                                     @endif
+                                    
+                                    <td>
                                     @if ($user->is_user_block)
-                                    <td><a class="btn btn-primary" href="{{route('block_user', ['id'=>$user->id])}}">Desbloquear</a></td>
+                                        <a class="btn btn-sm btn-primary" href="{{route('block_user', ['id'=>$user->id])}}">Desbloquear</a>
                                     @else
-                                    <td><a class="btn btn-danger" href="{{route('block_user', ['id'=>$user->id])}}">Bloquear</a></td>
+                                        <a class="btn btn-sm btn-danger" href="{{route('block_user', ['id'=>$user->id])}}">Bloquear</a>
                                     @endif
+                                        <a class="btn btn-sm" style="background: #000080; color: white" href="{{ route('edit_user', ['id'=>$user->id]) }}">Editar</a>
+                                    </td>
                                 </tr>
                                     
                                 @empty
@@ -76,7 +96,10 @@
 <!-- /#wrapper -->
 
 @endsection
-
 @section('js')
-
+<script>
+  setTimeout(function() {
+    $(".alert").fadeOut();
+  },3000);
+</script>
 @endsection 

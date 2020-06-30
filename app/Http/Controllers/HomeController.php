@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
+use App\Rol;
 
 class HomeController extends Controller
 {
@@ -45,5 +46,87 @@ class HomeController extends Controller
         }
         $user->save();
         return redirect()->route('usuarios')->with('mensaje','Cambio efectuado sobre usuario');
+    }
+
+    public function createUser(){
+        $rols = Rol::all();
+        return view('user.create')->with(compact('rols'));
+    }
+
+    public function storeUser(Request $request){
+
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8',
+            'rol' => 'required|exists:rols,rol_id'
+        ];
+
+        $messages = [
+            'name.required' => 'Debe ingresar el nombre del usuario',
+            'email.required' => 'Debe ingresar el email del usuario',
+            'email.unique' => 'El email ingresado ya se encuentra registrado',
+            'email.email' => 'El correo ingresado no cumple con el formato de un email',
+            'password.required' => 'Debe ingresar la contraseña del usuario',
+            'password.min' => 'La contraseña del usuario debe poseer al menos 8 caracteres',
+            'rol.required' => 'Es necesario asignarle un rol al usuario',
+            'rol.exists' => 'El rol seleccionado no existe'
+        ];
+        
+        $this->validate($request, $rules, $messages);
+
+        $user = new User();
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->rol_id = $request->input('rol');
+
+        $user->save();
+
+        return redirect('usuarios')->with('notification', 'El usuario fue registrado con éxito');
+    }
+
+    public function editUser($user_id){
+        $user = User::findOrFail($user_id);
+        $rols = Rol::all();
+
+        return view('user.edit')->with(compact('user', 'rols'));
+    }
+
+    public function updateUser(Request $request){
+
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'sometimes|nullable|min:8',
+            'rol' => 'required|exists:rols,rol_id'
+        ];
+
+        $messages = [
+            'name.required' => 'Debe ingresar el nombre del usuario',
+            'password.required' => 'Debe ingresar la contraseña del usuario',
+            'password.min' => 'La contraseña del usuario debe poseer al menos 8 caracteres',
+            'email.required' => 'Debe ingresar el email del usuario',
+            'email.email' => 'El correo ingresado no cumple con el formato de un email',
+            'rol.required' => 'Es necesario asignarle un rol al usuario',
+            'rol.exists' => 'El rol seleccionado no existe'
+        ];
+
+        $this->validate($request, $rules, $messages);
+
+        $user = User::findOrFail($request->input('id'));
+        if($request->input('password')){
+            $user->password = bcrypt($request->input('password'));            
+        }
+
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->rol_id = $request->input('rol');
+
+        $user->save();
+
+        return redirect('usuarios')->with('notification', 'Los datos del usuario fueron actualizados con éxito');
     }
 }

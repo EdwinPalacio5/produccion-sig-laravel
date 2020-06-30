@@ -25,6 +25,10 @@ Route::get('/base', function(){
 
 Route::get('/usuarios','HomeController@listUsers')->name('usuarios');
 Route::get('/usuario/block/{id}','HomeController@blockUser')->name('block_user');
+Route::get('/usuario/create','HomeController@createUser')->name('create_user');
+Route::post('/usuario/store','HomeController@storeUser')->name('store_user');
+Route::get('/usuario/edit{user_id}','HomeController@editUser')->name('edit_user');
+Route::post('/usuario/update','HomeController@updateUser')->name('update_user');
 
 Auth::routes();
 

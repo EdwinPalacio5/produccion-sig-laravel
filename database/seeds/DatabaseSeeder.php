@@ -14,7 +14,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             YearAndMonthSeeder::class,
             InsumoSeeder::class,
-            RotacionMPSeeder::class   
+            RotacionMPSeeder::class,
+            RolTableSeeder::class,
+            UserTableSeeder::class  
         ]);
     }
 }
