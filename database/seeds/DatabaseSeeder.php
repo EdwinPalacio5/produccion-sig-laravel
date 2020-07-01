@@ -16,7 +16,11 @@ class DatabaseSeeder extends Seeder
             InsumoSeeder::class,
             RotacionMPSeeder::class,
             RolTableSeeder::class,
-            UserTableSeeder::class  
+            UserTableSeeder::class,
+            EstadoTableSeeder::class,
+            ProductoTableSeeder::class,
+            PedidoTableSeeder::class  ,
+            LineasPedidoTableSeeder::class
         ]);
     }
 }
