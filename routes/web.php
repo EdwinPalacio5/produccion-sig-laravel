@@ -31,7 +31,8 @@ Route::get('/usuario/edit{user_id}','HomeController@editUser')->name('edit_user'
 Route::post('/usuario/update','HomeController@updateUser')->name('update_user');
 
 Route::get('/productos/parametros','ProductoController@selectYears')->name('select_years');
-Route::get('/productos/desde/{fecha_inical}/hasta/{fecha_final}','ProductoController@productDemand')->name('select_years');
+//Route::get('/productos/desde/{fecha_inical}/hasta/{fecha_final}','ProductoController@productDemand')->name('producs_demand');
+Route::get('/productos/demanda','ProductoController@productDemand')->name('producs_demand');
 
 Auth::routes();
 

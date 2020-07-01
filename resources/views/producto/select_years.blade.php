@@ -6,8 +6,8 @@
 
 @section('main')
 <div class="mt-4 row"></div>
-<div class="mt-4 row"></div>
-<div class="row mt-4 align-items-center">
+<div class="mt-2 row"></div>
+<div class="row align-items-center">
     <div class="col-1"></div>
     <div class="col-10">
         <div class="card mt-4 ml-4 mr-4 border border-dark">
@@ -15,7 +15,9 @@
             <h6>El año inicial seleccionado debe ser menor que el año final</h6>
           </div>
             <h5 class="h2 text-center card-header">Comparación de demanda de productos entre años</h5>
-            <form action="#" id="form_params">
+            <form action="{{ route('producs_demand') }}" id="form_params">
+              @method('GET')
+              <input type="text" name="pdf" id="pdf" hidden value="">
               <div class="card-body">
                 <h5 class="ml-4 card-title mb-4 text-center">Parametros de consulta</h5>
                 <br>
@@ -23,7 +25,7 @@
 
                   <div class="col-md-5">
                     <label><strong>Año Inicial</strong></label>
-                    <select class="form-control form-control-lg mt-2" name="anio-inicial" id="anioInicial">
+                    <select class="form-control form-control-lg mt-2" name="anio_inicial" id="anioInicial">
                       <option value="0">Seleccionar año inicial</option>
                       @forelse ($pedidos as $pedido)
                         <option 
@@ -40,7 +42,7 @@
 
                   <div class="col-md-5">
                     <label><strong>Año Final</strong></label>
-                    <select class="form-control form-control-lg mt-2" name="anio-final" id="anioFinal">
+                    <select class="form-control form-control-lg mt-2" name="anio_final" id="anioFinal">
                       <option value="1">Seleccionar año final</option>
                       @forelse ($pedidos as $pedido)
                         <option 
@@ -77,16 +79,6 @@
 
 @section('js')
     <script>
-      /*$(document).ready(function(){
-        $("#pdf").on("click",function(){
-          $("#PDF").val(1);
-          $("#form_params").submit();
-        });
-        $("#query").on("click",function(){
-          $("#PDF").val(0);
-          $("#form_params").submit();
-        });
-      });*/
 
       $('#anioInicial, #anioFinal').on('change', function(){
         var anio_inicial = $('#anioInicial').val();
@@ -104,10 +96,14 @@
       });
 
       $('#btnConsulta').on('click', function(){
-          var anio_inicial = $('#anioInicial').val();
-          var anio_final = $('#anioFinal').val();  
-
-          location.href = '/productos/desde/' + anio_inicial + '/hasta/' + anio_final;
+          $("#pdf").val(0);
+          $("#form_params").submit();
         });
+
+      $('#btnReporte').on('click', function(){
+          $("#pdf").val(1);
+          $("#form_params").submit();
+        });
+      
     </script>
 @endsection

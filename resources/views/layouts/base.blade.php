@@ -99,7 +99,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item first-one">
-                                    <a class="nav-linkk " href="#">
+                                    <a class="nav-linkk " href="{{ route('select_years') }}">
                                         Informe de Demanda de Productos
                                     </a>
                                 </li>

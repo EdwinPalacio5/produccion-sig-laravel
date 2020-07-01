@@ -1,30 +1,30 @@
-@extends("../layouts.base")
-@section("head")
-@section("css")
-    <!--  CSS --> 
-@endsection
-
-
-@section('main')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+        .page-break {
+            page-break-after: always;
+        }
+        </style>
+</head>
+<body>
     <div id="wrapper">
         <div id="content-wrapper">
             <div class="container-fluid">
-                <h6 class="mb-2 mt-1 text-right">Fecha de consulta: <strong>{{$fecha}}</strong></h6>
-                <div class="my-2 my-lg-2 text-center row">
-                    <div class="col-2"></div>
-                   <div class="col-2 mt-2"> <img src="{{asset('./img/guayabera1.png')}}" width="70" class="d-inline-block align-top logo"></div>
-                   <div class="col-4"> 
-                       <h4 class="mb-2 mt-1 text-center">La Guayabera S.A. de C.V.</h4>
-                       <h4 class="mb-4 mt-3 text-center">Comparación de demanda en productos por Año</h4>
-                       <h4 class="mb-4 mt-3 text-center">Desde: {{ date('Y', strtotime($fecha_inicial)) }} hasta: {{ $fecha_f }}</h4>
+                <h6 class="mb-4 mt-4 text-right">Fecha de consulta: <strong>{{$fecha}}</strong></h6>
+
+                <div style="display:flex;margin-left: 30%;">
+                    <div><img src="{{ public_path('/img/guayabera1.png') }}" width="70" class="d-inline-block align-top logo"></div>
+                    <div> 
+                       <h4 style="margin-left: 21%;">La Guayabera S.A. de C.V.</h4>
+                       <h4 class="mt-3" style="margin-left: 10%;">Comparación de demanda en productos por Año</h4>
+                       <h4 class="mt-3" style="margin-left: 22%;">Desde: {{ date('Y', strtotime($fecha_inicial)) }} hasta: {{ $fecha_f }}</h4>
                     </div>
                 </div>
+
                 <!-- DataTables Example -->
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <i class="fas fa-table"></i>
-                        Informe
-                    </div>
+                <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="text-align: center;">
@@ -67,18 +67,15 @@
         <!-- /.content-wrapper -->
     </div>
     <!-- /#wrapper -->
-@endsection
+</body>
 
-
-@section('js')
-    <!--  JS --> 
-
-    
-    <script>
+<script>
     // Call the dataTables jQuery plugin
     $(document).ready(function() {
         $('#dataTable').DataTable();
     });
-    </script>
-@endsection
+</script>
+
+</html>
+    <!--  JS --> 
 

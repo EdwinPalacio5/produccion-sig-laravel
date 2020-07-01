@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Pedido;
 use App\LineaPedido;
 use App\Producto;
+use \PDF;
 
 class ProductoController extends Controller
 {
@@ -18,12 +19,16 @@ class ProductoController extends Controller
     	return view('producto.select_years')->with(compact('pedidos'));
     }
 
-    public function productDemand($fecha_inicial, $fecha_final){
+    public function productDemand(Request $request){
     	
-    	
-    	$fecha_final++;
+    	$fecha_f = $request->anio_final;
+        $fecha_inicial = $request->anio_inicial;
+        $fecha_final = $fecha_f + 1;
+        $generar_pdf = $request->pdf;
+
     	$fecha_inicial = $fecha_inicial.'-01-01';
     	$fecha_final = $fecha_final.'-01-01';
+        $fecha = date('d/M/Y G:i:s');
 
     	$anios = DB::table('pedidos')->whereBetween('fecha_entrega', [$fecha_inicial, $fecha_final])->get();
     	$products_demand = DB::table('productos')->get();
@@ -42,6 +47,12 @@ class ProductoController extends Controller
     			$pd->lineas_pedido = $lineas_pedido;
     		}
 
-    	return view('producto.product_demand')->with(compact('anios', 'products_demand'));
+    	if($generar_pdf == 0){
+            return view('producto.product_demand')->with(compact('anios', 'products_demand', 'fecha', 'fecha_inicial', 'fecha_f'));
+        }else{
+
+            $pdf = PDF::loadView('producto.pdf', compact('anios', 'products_demand', 'fecha', 'fecha_inicial', 'fecha_f'));
+            return $pdf->setPaper('legal', 'landscape')->stream("comparacion_entre_años_$fecha.pdf");
+        }
     }
 }
