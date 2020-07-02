@@ -84,11 +84,13 @@
         var anio_inicial = $('#anioInicial').val();
         var anio_final = $('#anioFinal').val();
 
+        //Si el año inicial el mayor que el año final se desactivan los botones y se muestra el mensaje
         if(anio_inicial >= anio_final){
           $('#btnConsulta').prop('disabled', true);
           $('#btnReporte').prop('disabled', true);
           $(".alert").fadeIn();   
         }else{
+          //En caso contrario los botones se activan y se oculta el mensaje de error
           $('#btnConsulta').prop('disabled', false);
           $('#btnReporte').prop('disabled', false);
           $(".alert").fadeOut();   
