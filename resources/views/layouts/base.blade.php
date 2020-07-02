@@ -94,7 +94,7 @@
                                 </li>
                                 
                                 <li class="nav-item first-one">
-                                    <a class="nav-linkk" href="#">
+                                    <a class="nav-linkk" href="{{route('plp_entries')}}">
                                         Informe de Progreso
                                     </a>
                                 </li>

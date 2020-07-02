@@ -15,13 +15,13 @@ class EstadoTableSeeder extends Seeder
         //No iniciado
         EstadoPedido::create([
         	'id_estado_pedido' => 1,
-        	'estado_pedido' => 'No iniciado'
+        	'estado_pedido' => 'Iniciado'
         ]);
 
         //Iniciado
         EstadoPedido::create([
         	'id_estado_pedido' => 2,
-        	'estado_pedido' => 'Iniciado'
+        	'estado_pedido' => 'No Iniciado'
         ]);
 
         //Finalizado

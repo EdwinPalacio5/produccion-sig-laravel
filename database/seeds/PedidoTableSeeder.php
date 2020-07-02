@@ -15,13 +15,13 @@ class PedidoTableSeeder extends Seeder
         Pedido::create([
         	'id_pedido' => 1,
         	'fecha_entrega' => '2010-07-28 21:52:27',
-        	'id_estado_pedido' => 3
+        	'id_estado_pedido' => 1
         ]);
 
         Pedido::create([
         	'id_pedido' => 2,
         	'fecha_entrega' => '2011-07-28 21:52:27',
-        	'id_estado_pedido' => 3
+        	'id_estado_pedido' => 1
         ]);
 
         Pedido::create([

@@ -35,10 +35,10 @@
             <!-- Authentication Links -->
             @guest
             <div class="my-2 my-lg-2">
-                <a class="navbar-bran "   href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i>{{ __('Login ') }}</a>
-                @if (Route::has('register'))
+                <a class="navbar-bran mr-2 "   href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i>{{ __('Login ') }}</a>
+                <!--@if (Route::has('register'))
                 <a class="navbar-bran "  href="{{ route('register') }}"><i class="fa fa-user-plus"></i>{{ __(' Registro ') }}</a>
-                @endif
+                @endif-->
             </div>
                 @else
 
