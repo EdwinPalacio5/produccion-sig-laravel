@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\MesProduccion;
 use App\AnioProduccion;
 use App\RotacionInsumo;
@@ -12,12 +13,29 @@ use App\Insumo;
 class RotacionMPController extends Controller
 {
     /**
+     * Funcion que controla el acceso a personas que teniendo la URL quieran
+     * acceder a funcionalidad de usuario de negocio tactico, pero no poseen
+     * el rol de usuario correcto. 
+     * @author Ricardo Estupinian
+     * @param Request, peticion del usuario para acceder.
+     * */
+    public function securityAccessSecondLayer(){
+        if(!Auth::user()->es_tactico){
+            abort(403);
+        }
+    }
+
+    /**
      * Funcion para mostrar la vista de parametros de consulta,
      * se recuperan todos los insumos, meses y años que se 
      * almacenan en la base de datos gerenciales.
      * @author Ricardo Estupinian
      */
     public function entriesIndex(){
+        //Funcion que controla el acceso 
+        $this->securityAccessSecondLayer();
+
+        //Recuperacion de datos para consulta si posee el rol especificado
         $insumos = Insumo::all();
         $meses = MesProduccion::all();
         $años = AnioProduccion::all();

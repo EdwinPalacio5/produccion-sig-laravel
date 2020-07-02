@@ -81,33 +81,42 @@
                             <ul class="nav flex-column">
                                 @yield("ul_sidebar")
                                 
+                                @if(auth()->user()->es_admin)
                                 <li class="nav-item first-one">
                                 <a class="nav-linkk" href="{{route('usuarios')}}">
                                         Mantenimiento de Usuarios
                                     </a>
                                 </li>
-
+                                @endif
+                                @if(auth()->user()->es_tactico)
                                 <li class="nav-item first-one">
                                     <a class="nav-linkk" style="text-decoration:none;" href="{{route('rmp_entries')}}">
                                         Informe de Indice de Rotación de Insumos
                                     </a>
                                 </li>
+                                @endif
                                 
+                                @if(auth()->user()->es_tactico)                               
                                 <li class="nav-item first-one">
                                     <a class="nav-linkk" href="{{route('plp_entries')}}">
-                                        Informe de Progreso
+                                        Informe de Resumen de Progreso de linea de producto
                                     </a>
                                 </li>
+                                @endif
+                                @if(auth()->user()->es_estrategico)
                                 <li class="nav-item first-one">
                                     <a class="nav-linkk " href="{{ route('select_years') }}">
                                         Informe de Demanda de Productos
                                     </a>
                                 </li>
+                                @endif
+                                @if(auth()->user()->es_estrategico)
                                 <li class="nav-item first-one">
                                     <a class="nav-linkk " href="#">
                                         Informe de Compra de Insumos
                                     </a>
                                 </li>
+                                @endif
                             </ul>
                         </div>
                     </nav>
