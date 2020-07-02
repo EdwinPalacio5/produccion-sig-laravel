@@ -15,6 +15,20 @@
                     @endif
 
                     You are logged in!
+                    <br><br>
+                    
+                    @if(auth()->user()->es_admin)
+                    <div class="alert alert-success text-center ml-4 mr-4">Eres usuario administrador</div>
+                    @endif
+
+                    @if(auth()->user()->es_estrategico)
+                    <div class="alert alert-success text-center ml-4 mr-4">Eres usuario estratégico</div>
+                    @endif
+
+                    @if(auth()->user()->es_tactico)
+                    <div class="alert alert-success text-center ml-4 mr-4">Eres usuario táctico</div>
+                    @endif
+
                 </div>
             </div>
         </div>

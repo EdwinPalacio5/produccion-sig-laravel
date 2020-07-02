@@ -14,7 +14,7 @@
           <div class="alert alert-danger text-center collapse">
             <h6>El año inicial seleccionado debe ser menor que el año final</h6>
           </div>
-            <h5 class="h2 text-center card-header">Comparación de demanda de productos entre años</h5>
+            <h5 class="h2 text-center card-header">Comparación de la demanda de productos por años</h5>
             <form action="{{ route('producs_demand') }}" id="form_params">
               @method('GET')
               <input type="text" name="pdf" id="pdf" hidden value="">

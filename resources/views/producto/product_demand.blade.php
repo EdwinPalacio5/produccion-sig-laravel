@@ -9,14 +9,13 @@
     <div id="wrapper">
         <div id="content-wrapper">
             <div class="container-fluid">
-                <h6 class="mb-2 mt-1 text-right">Fecha de consulta: <strong>{{$fecha}}</strong></h6>
+                <h6 class="mb- mt-1 text-right">Fecha de consulta: <strong>{{$fecha}}</strong></h6>
                 <div class="my-2 my-lg-2 text-center row">
-                    <div class="col-2"></div>
-                   <div class="col-2 mt-2"> <img src="{{asset('./img/guayabera1.png')}}" width="70" class="d-inline-block align-top logo"></div>
-                   <div class="col-4"> 
-                       <h4 class="mb-2 mt-1 text-center">La Guayabera S.A. de C.V.</h4>
-                       <h4 class="mb-4 mt-3 text-center">Comparación de demanda en productos por Año</h4>
-                       <h4 class="mb-4 mt-3 text-center">Desde: {{ date('Y', strtotime($fecha_inicial)) }} hasta: {{ $fecha_f }}</h4>
+                   <div class="col-2 mt-4 text-right"> <img src="{{asset('./img/guayabera1.png')}}" width="70" class="d-inline-block align-top logo"></div>
+                   <div class="col-8 mt-4 mb-3"> 
+                       <h4 class="text-center">La Guayabera S.A. de C.V.</h4>
+                       <h4 class="mb-2 mt-2 text-center">Cantidad demandada de productos por cada año</h4>
+                       <h4 class="mb-2 mt-2 text-center">Desde: {{ date('Y', strtotime($fecha_inicial)) }} hasta: {{ $fecha_f }}</h4>
                     </div>
                 </div>
                 <!-- DataTables Example -->

@@ -37,6 +37,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //Validations
     public static $rules = [
         'name' => 'required',
         'email' => 'required|email|unique:users',
@@ -54,4 +55,22 @@ class User extends Authenticatable
         'rol.required' => 'Es necesario asignarle un rol al usuario',
         'rol.exists' => 'El rol seleccionado no existe'
     ];
+
+    //Relationships
+    public function rol(){
+        return $this->belongsTo(Rol::class, 'rol_id', 'rol_id');
+    }
+
+    //accessors
+    public function getEsAdminAttribute(){ //es_admin
+        return $this->rol->rol_id == 1;
+    }
+
+    public function getEsEstrategicoAttribute(){ //es_estrategico
+        return $this->rol->rol_id == 2;
+    }
+
+    public function getEsTacticoAttribute(){ //es_tactico
+        return $this->rol->rol_id == 3;
+    }
 }

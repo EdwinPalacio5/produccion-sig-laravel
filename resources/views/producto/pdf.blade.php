@@ -14,11 +14,11 @@
             <div class="container-fluid">
                 <h6 class="mb-4 mt-4 text-right">Fecha de consulta: <strong>{{$fecha}}</strong></h6>
 
-                <div style="display:flex;margin-left: 30%;">
-                    <div><img src="{{ public_path('/img/guayabera1.png') }}" width="70" class="d-inline-block align-top logo"></div>
+                <div style="display:flex;margin-left: 25%;">
+                    <div class="mt-3"><img src="{{ public_path('/img/guayabera1.png') }}" width="60" class="d-inline-block logo"></div>
                     <div> 
                        <h4 style="margin-left: 21%;">La Guayabera S.A. de C.V.</h4>
-                       <h4 class="mt-3" style="margin-left: 10%;">Comparación de demanda en productos por Año</h4>
+                       <h4 class="mt-3" style="margin-left: 8%;">Cantidad demandada de productos por cada año</h4>
                        <h4 class="mt-3" style="margin-left: 22%;">Desde: {{ date('Y', strtotime($fecha_inicial)) }} hasta: {{ $fecha_f }}</h4>
                     </div>
                 </div>

@@ -50,6 +50,9 @@ class HomeController extends Controller
 
     public function createUser(){
         $rols = Rol::all();
+
+        dd(auth()->user()->rol->rol);
+
         return view('user.create')->with(compact('rols'));
     }
 
