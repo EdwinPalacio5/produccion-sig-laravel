@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\CompraInsumo;
 use App\Insumo;
 use App\AnioProduccion;
-use DB;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Database\Eloquent\Collection;     
+use DB;   
 
 class CompraInsumoController extends Controller
 {
@@ -83,7 +82,15 @@ class CompraInsumoController extends Controller
                 ->get();
             $insumo->compras = $compras_insumo;
         }  
-
-        return view('compra_insumo.resultados', compact('insumos', 'anio_inicial','anio_final','anios', 'fecha'));
+         /*Porcion de codigo que actua como switch para mostrar los resultado
+          en la interfaz WEB o en formato PDF*/
+          if($request->PDF==0){
+            return view('compra_insumo.resultados', compact('insumos', 'anio_inicial','anio_final','anios', 'fecha'));
+        }else{
+            //Generacion de PDF
+            $pdf = \PDF::loadView('compra_insumo.pdf', compact('insumos', 'anio_inicial','anio_final','anios', 'fecha'));
+            return $pdf->setPaper('legal', 'landscape')->stream("compra_insumo_$fecha.pdf");
+        }
+        
     }
 }

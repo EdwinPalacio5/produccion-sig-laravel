@@ -35,7 +35,7 @@
 
             <div class="my-2 my-lg-2">
                 <img src="{{asset('./img/guayabera1.png')}}" width="40" class="d-inline-block align-top logo">
-                <a class="navbar-brand logo-text ml-2" href="#">
+            <a class="navbar-brand logo-text ml-2" href="{{ route ('index')}}">
                     La Guayabera S.A. de C.V.
                 </a>
             </div>
