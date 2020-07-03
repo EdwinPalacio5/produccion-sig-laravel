@@ -46,7 +46,7 @@ class ProductoController extends Controller
 
     			$pd->lineas_pedido = $lineas_pedido;
     		}
-
+		
     	if($generar_pdf == 0){
             return view('producto.product_demand')->with(compact('anios', 'products_demand', 'fecha', 'fecha_inicial', 'fecha_f'));
         }else{

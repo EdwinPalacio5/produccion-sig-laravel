@@ -23,7 +23,7 @@ class YearAndMonthSeeder extends Seeder
             'id_anio'=>2,
             'anio'=>2017
         ]);
-        /*AnioProduccion::create([
+        AnioProduccion::create([
             'id_anio'=>3,
             'anio'=>2018
         ]);
@@ -34,7 +34,7 @@ class YearAndMonthSeeder extends Seeder
         AnioProduccion::create([
             'id_anio'=>5,
             'anio'=>2020
-        ]);*/
+        ]);
 
         //Create months of year 1
         MesProduccion::create([

@@ -112,7 +112,7 @@
                                 @endif
                                 @if(auth()->user()->es_estrategico)
                                 <li class="nav-item first-one">
-                                    <a class="nav-linkk " href="#">
+                                    <a class="nav-linkk " href="{{ route('parametro_compra_insumo') }}">
                                         Informe de Compra de Insumos
                                     </a>
                                 </li>

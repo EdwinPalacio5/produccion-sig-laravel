@@ -10,4 +10,9 @@ class CompraInsumo extends Model
     protected $fillable = [
         'id_linea_compra','id_insumo', 'cantidad_insumo','precio_unitario_insumo','fecha_compra_insumo'
     ];
+
+    public function insumo()
+    {
+        return $this->belongsTo('App\Insumo');
+    }
 }
