@@ -33,10 +33,12 @@
                         <i class="fas fa-table"></i>Informe
                     </div>
                     <div class="col-md-8 text-right">
+                        @if(auth()->user()->es_admin)
                         <a class="btn btn-sm btn-primary" title="Agregar Rango de Renta" href="{{ route('create_user') }}">
                             <i class="fas fa-plus-circle mr-1 text-white"></i>
                             <span class="text-white">Nuevo Usuario</span>
                         </a>
+                        @endif
                     </div>
                     </div>
                 </div>
@@ -71,7 +73,9 @@
                                     @else
                                         <a class="btn btn-sm btn-danger" href="{{route('block_user', ['id'=>$user->id])}}">Bloquear</a>
                                     @endif
+                                    @if(auth()->user()->es_admin)
                                         <a class="btn btn-sm" style="background: #000080; color: white" href="{{ route('edit_user', ['id'=>$user->id]) }}">Editar</a>
+                                    @endif
                                     </td>
                                 </tr>
                                     

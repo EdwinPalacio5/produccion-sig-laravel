@@ -9,12 +9,16 @@ use App\Pedido;
 use App\LineaPedido;
 use App\Producto;
 use \PDF;
-
+use \Auth;
 class ProductoController extends Controller
 {
     
     public function selectYears(){
 		$pedidos = Pedido::all();
+
+        if(!Auth::user()->es_estrategico){
+            abort(403);
+        }
 
     	return view('producto.select_years')->with(compact('pedidos'));
     }
@@ -58,7 +62,8 @@ class ProductoController extends Controller
 
         //Se recuperan los años que se encuentra de todos los pedidos que se encuentran entre los años solicitados
         $anios = DB::table('pedidos')->whereBetween('fecha_entrega', [$fecha_inicial, $fecha_final])->get();
-        $products_demand = DB::table('productos')->get();
+        //$products_demand = DB::table('productos')->get();
+        $products_demand = Producto::orderBy('nombre_producto', 'asc')->get();
 
         $products_demand->pluck('lineas_pedido');
 
