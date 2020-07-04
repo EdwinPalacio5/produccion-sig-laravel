@@ -39,11 +39,9 @@ class ProductoController extends Controller
     	$fecha_final = $fecha_final.'-01-01';
         $fecha = date('d/M/Y G:i:s');
 
-<<<<<<< HEAD
         $anios = DB::table('pedidos')->whereBetween('fecha_entrega', [$fecha_inicial, $fecha_final])->get();
         $products_demand = $this->getProducts($fecha_inicial, $fecha_final);
 
-=======
     	$anios = DB::table('pedidos')->whereBetween('fecha_entrega', [$fecha_inicial, $fecha_final])->get();
     	$products_demand = DB::table('productos')->get();
 
@@ -60,8 +58,7 @@ class ProductoController extends Controller
 
     			$pd->lineas_pedido = $lineas_pedido;
     		}
-		
->>>>>>> 4a561594a419d000e3b4a7f19ce6d7f2d448e92e
+
     	if($generar_pdf == 0){
             return view('producto.product_demand')->with(compact('anios', 'products_demand', 'fecha', 'fecha_inicial', 'fecha_f'));
         }else{
