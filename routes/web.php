@@ -38,6 +38,8 @@ Route::get('/productos/demanda','ProductoController@productDemand')->name('produ
 
 Auth::routes();
 
+Route::get('/administracion-etl', 'HomeController@etl')->name('etl');
+
 Route::get('/home', 'HomeController@home')->name('home');
 
 Route::get('/index', 'HomeController@index')->name('index');
