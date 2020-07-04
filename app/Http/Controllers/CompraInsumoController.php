@@ -13,9 +13,8 @@ class CompraInsumoController extends Controller
 {
 
     /**
-     * Funcion que controla el acceso a personas que teniendo la URL quieran
-     * acceder a funcionalidad de usuario de negocio estratégico, pero no poseen
-     * el rol de usuario correcto. 
+     * Funcion que controla el acceso a personas que teniendo la URL quieran acceder a funcionalidad
+     * de usuario de negocio estratégico, pero no poseen el rol de usuario correcto. 
      * @author Edwin Palacios
      * @param Request, peticion del usuario para acceder.
      * */
@@ -39,8 +38,8 @@ class CompraInsumoController extends Controller
    }
 
    /**
-    * Funcion para mostrar los resultados,
-    * 
+    * Funcion para mostrar los resultados de la compra de insumo
+    * @Parametro: Request request
     * @author Edwin Palacios
     */
     public function resultadosIndex(Request $request){
@@ -60,7 +59,7 @@ class CompraInsumoController extends Controller
                                 ->where('anio','<=', $anio_final->anio)
                                 ->get();
 
-        //Si se escogen todos los insumos
+        //Si se escogen todos los insumos o uno en específico
         if($insumo_id == -1){
             $insumos = DB::table('insumos')->get(); 
         }else{
@@ -82,6 +81,7 @@ class CompraInsumoController extends Controller
                 ->get();
             $insumo->compras = $compras_insumo;
         }  
+        $insumos = $insumos->sortBy('nombre_insumo');
          /*Porcion de codigo que actua como switch para mostrar los resultado
           en la interfaz WEB o en formato PDF*/
           if($request->PDF==0){
