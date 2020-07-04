@@ -111,4 +111,9 @@ class HomeController extends Controller
 
         return redirect('usuarios')->with('notification', 'Los datos del usuario fueron actualizados con éxito');
     }
+
+    
+    public function etl(){
+        return view('etl');
+    }
 }
