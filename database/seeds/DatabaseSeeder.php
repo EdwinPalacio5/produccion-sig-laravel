@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             EstadoTableSeeder::class,
             ProductoTableSeeder::class,
             PedidoTableSeeder::class  ,
-            LineasPedidoTableSeeder::class
+            LineasPedidoTableSeeder::class,
+            CompraInsumoSeeder::class
         ]);
     }
 }

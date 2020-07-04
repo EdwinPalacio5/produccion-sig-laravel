@@ -40,4 +40,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@home')->name('home');
 
-Route::get('/index', 'HomeController@index');
+Route::get('/index', 'HomeController@index')->name('index');
+
+Route::get('/compra-insumos/parametros','CompraInsumoController@parametrosIndex')->name('parametro_compra_insumo');
+Route::get('/compra-insumos/resultados','CompraInsumoController@resultadosIndex')->name('resultado_compra_insumo');

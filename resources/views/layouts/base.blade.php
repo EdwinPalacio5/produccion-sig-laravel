@@ -35,7 +35,7 @@
 
             <div class="my-2 my-lg-2">
                 <img src="{{asset('./img/guayabera1.png')}}" width="40" class="d-inline-block align-top logo">
-                <a class="navbar-brand logo-text ml-2" href="#">
+            <a class="navbar-brand logo-text ml-2" href="{{ route ('index')}}">
                     La Guayabera S.A. de C.V.
                 </a>
             </div>
@@ -112,7 +112,7 @@
                                 @endif
                                 @if(auth()->user()->es_estrategico)
                                 <li class="nav-item first-one">
-                                    <a class="nav-linkk " href="#">
+                                    <a class="nav-linkk " href="{{ route('parametro_compra_insumo') }}">
                                         Informe de Compra de Insumos
                                     </a>
                                 </li>
